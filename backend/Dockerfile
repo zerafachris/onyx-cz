@@ -104,6 +104,9 @@ COPY ./alembic.ini /app/alembic.ini
 COPY supervisord.conf /usr/etc/supervisord.conf
 COPY ./static /app/static
 
+RUN mkdir -p /tmp /var/tmp /usr/tmp /app/tmp && \
+    chmod -R 777 /tmp /var/tmp /usr/tmp /app/tmp
+
 # Escape hatch scripts
 COPY ./scripts/debugging /app/scripts/debugging
 COPY ./scripts/force_delete_connector_by_id.py /app/scripts/force_delete_connector_by_id.py
