@@ -105,7 +105,11 @@ COPY supervisord.conf /usr/etc/supervisord.conf
 COPY ./static /app/static
 
 RUN mkdir -p /tmp /var/tmp /usr/tmp /app/tmp && \
-    chmod -R 777 /tmp /var/tmp /usr/tmp /app/tmp
+    mkdir -p /app/tmp /app/var/tmp /app/usr/tmp && \
+    chmod -R 777 /tmp /var/tmp /usr/tmp /app/tmp && \
+    chmod -R 777 /app/tmp /app/var/tmp /app/usr/tmp
+
+    
 
 # Escape hatch scripts
 COPY ./scripts/debugging /app/scripts/debugging
